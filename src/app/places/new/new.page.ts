@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { AlertController } from '@ionic/angular';
+import { Router } from '@angular/router';
+import { PlacesService } from 'src/app/services/places.service';
+import { IPlaces } from 'src/app/interfaces/iplaces';
 
 @Component({
   selector: 'app-new',
@@ -7,9 +11,46 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NewPage implements OnInit {
 
-  constructor() { }
+  place: IPlaces = {
+    id: '',
+    title: '',
+    image_url: '',
+    descripcion: '',
+    available_to: '',
+    available_from: '',
+    user_num: '',
+    price: ''
+  };
+
+  constructor(private placesService: PlacesService , private alertController: AlertController, private route: Router) {
+  }
 
   ngOnInit() {
+  }
+
+  enviarSitio() {
+      this.placesService.enviarSitio(this.place).subscribe((resp: any) => {
+        this.presentAlertConfirm();
+      });
+    }
+
+
+  async presentAlertConfirm() {
+    const alert = await this.alertController.create({
+      header: 'Confirm!',
+      message: 'Message <strong>text</strong>!!!',
+      buttons: [
+        {
+          text: 'Ok',
+          handler: () => {
+            console.log('Aceptar');
+            this.route.navigate(['/places']);
+          }
+        }
+      ]
+    });
+
+    await alert.present();
   }
 
 }

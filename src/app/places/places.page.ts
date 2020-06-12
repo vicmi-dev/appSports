@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AlertController } from '@ionic/angular';
+import { AlertController, MenuController } from '@ionic/angular';
 import { IPlaces } from '../interfaces/iplaces';
 import { PlacesService } from '../services/places.service';
 
@@ -22,7 +22,7 @@ export class PlacesPage implements OnInit {
   };
 
 
-  constructor(private placesService: PlacesService, private alertController: AlertController) { }
+  constructor(private placesService: PlacesService, private menuCtrl: MenuController, private alertController: AlertController) { }
 
   ngOnInit() {
   }

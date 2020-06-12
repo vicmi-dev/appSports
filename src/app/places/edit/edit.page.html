@@ -1,9 +1,35 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>edit</ion-title>
+    <ion-title>actualizarCliente</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <ion-list>
+    <ion-item>
+      <ion-label>Título</ion-label>
+      <ion-input type="text" [(ngModel)]="place.title"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Descripción</ion-label>
+      <ion-input type="text" [(ngModel)]="place.descripcion"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Disponibilidad desde</ion-label>
+      <ion-input type="email" [(ngModel)]="place.available_from"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Disponibilidad hasta</ion-label>
+      <ion-input type="text" [(ngModel)]="place.available_to"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Precio</ion-label>
+      <ion-input  [(ngModel)]="place.price"></ion-input>
+    </ion-item>
+  </ion-list>
+  
+  <ion-button (click)="actualizarCliente()" expand="block">Actualizar</ion-button>
 </ion-content>

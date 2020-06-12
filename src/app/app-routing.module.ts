@@ -3,28 +3,31 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
+    path: '', redirectTo: 'places', pathMatch: 'full'
+  },
+  {
     path: 'places',
-    loadChildren: () => import('./places/places.module').then( m => m.PlacesPageModule)
-  },
-  {
-    path: '',
-    redirectTo: 'places',
-    pathMatch: 'full'
-  },
-  {
-    path: 'detail',
-    loadChildren: () => import('./places/detail/detail.module').then( m => m.DetailPageModule)
-  },
-  {
-    path: 'edit',
-    loadChildren: () => import('./places/edit/edit.module').then( m => m.EditPageModule)
-  },
-  {
-    path: 'new',
-    loadChildren: () => import('./places/new/new.module').then( m => m.NewPageModule)
-  },
-  
-];
+    children: [
+      {
+        path: '',
+        loadChildren: () => import('./places/places.module').then(m => m.PlacesPageModule)
+      },
+      {
+        path: 'edit/:placeId',
+        loadChildren: () => import('./places/edit/edit.module').then(m => m.EditPageModule)
+      },
+      {
+        path: 'new',
+        loadChildren: () => import('./places/new/new.module').then(m => m.NewPageModule)
+      },
+      {
+        path: ':placeId',
+        loadChildren: () => import('./places/detail/detail.module').then(m => m.DetailPageModule)
+      },
+    ]
+  }
+]
+
 
 @NgModule({
   imports: [

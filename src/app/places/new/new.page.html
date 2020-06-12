@@ -1,9 +1,24 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>new</ion-title>
+    <ion-title>Añadir sitio</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-
+<ion-content [fullscreen]="true">
+  <ion-list>
+    <ion-item>
+      <ion-label>Título</ion-label>
+      <ion-input type="text" [(ngModel)]="place.title"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Descripción</ion-label>
+      <ion-input type="text" [(ngModel)]="place.descripcion"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Precio</ion-label>
+      <ion-input [(ngModel)]="place.price"></ion-input>
+    </ion-item>
+  </ion-list>
+  Envi
+  <ion-button (click)="enviarSitio()" expand="block">Añadir sitio</ion-button>
 </ion-content>

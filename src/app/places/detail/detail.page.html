@@ -1,9 +1,26 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>detail</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/places"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ isLoading ? 'Loading...' : place.title }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <div text-center *ngIf="isLoading">
+    <ion-spinner color="primary"></ion-spinner>
+  </div>
+  <ion-grid no-padding *ngIf="!isLoading">
+    <ion-row>
+      <ion-col size-sm="6" offset-sm="3" no-padding>
+        <ion-img [src]="place.image_url"></ion-img>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size-sm="6" offset-sm="3" text-center padding>
+        <p>{{ place.descripcion }}</p>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
