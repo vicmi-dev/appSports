@@ -3,10 +3,10 @@ export interface IPlaces {
     title: string;
     image_url: string;
     descripcion: string;
-    available_to: string;
-    available_from: string;
+    available_to: Date;
+    available_from: Date;
     user_num: string;
-    price: string;
+    price: number;
 }
 
 

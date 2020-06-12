@@ -15,10 +15,10 @@ export class PlacesPage implements OnInit {
     title: '',
     image_url: '',
     descripcion: '',
-    available_to: '',
-    available_from: '',
+    available_to: new Date(),
+    available_from: new Date(),
     user_num: '',
-    price: ''
+    price: 0
   };
 
 
@@ -36,10 +36,6 @@ export class PlacesPage implements OnInit {
     });
   }
 
-  deleteCliente(id) {
-    this.presentAlertConfirm(id);
-
-  }
 
   async presentAlertConfirm(id) {
     const alert = await this.alertController.create({

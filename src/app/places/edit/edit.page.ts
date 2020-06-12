@@ -16,10 +16,10 @@ export class EditPage implements OnInit {
     title: '',
     image_url: '',
     descripcion: '',
-    available_to: '',
-    available_from: '',
+    available_to: new Date(),
+    available_from: new Date(),
     user_num: '',
-    price: ''
+    price: 0
   };
   isLoading = false;
 

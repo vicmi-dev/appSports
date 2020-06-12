@@ -19,15 +19,17 @@
     </ion-item>
     <ion-item>
       <ion-label>Disponibilidad desde</ion-label>
-      <ion-input type="email" [(ngModel)]="place.available_from"></ion-input>
+      <ion-datetime displayFormat="YYYY MM DD" 
+          [(ngModel)]="place.available_from" placeholder="Seleccionar fecha"></ion-datetime>
     </ion-item>
     <ion-item>
       <ion-label>Disponibilidad hasta</ion-label>
-      <ion-input type="text" [(ngModel)]="place.available_to"></ion-input>
+      <ion-datetime displayFormat="YYYY MM DD" 
+          [(ngModel)]="place.available_to" placeholder="Seleccionar fecha"></ion-datetime>
     </ion-item>
     <ion-item>
       <ion-label>Precio</ion-label>
-      <ion-input  [(ngModel)]="place.price"></ion-input>
+      <ion-input type="number" [(ngModel)]="place.price"></ion-input>
     </ion-item>
   </ion-list>
   
