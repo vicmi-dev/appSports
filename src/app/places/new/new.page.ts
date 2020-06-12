@@ -37,8 +37,8 @@ export class NewPage implements OnInit {
 
   async presentAlertConfirm() {
     const alert = await this.alertController.create({
-      header: 'Confirm!',
-      message: 'Message <strong>text</strong>!!!',
+      header: 'Instalación añadida',
+      message: 'Gracias por añadir una nueva instalación deportiva',
       buttons: [
         {
           text: 'Ok',

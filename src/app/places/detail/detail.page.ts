@@ -13,16 +13,13 @@ import { Subscription } from 'rxjs';
 export class DetailPage implements OnInit {
   place: IPlaces;
   isLoading = false;
-
+  loadedPlaces: IPlaces[] = [];
   private placeSub: Subscription;
 
   constructor(
     private navCtrl: NavController,
     private route: ActivatedRoute,
     private placesService: PlacesService,
-    private modalCtrl: ModalController,
-    private actionSheetCtrl: ActionSheetController,
-    private loadingCtrl: LoadingController,
     private alertCtrl: AlertController,
     private router: Router
   ) {}
@@ -59,5 +56,44 @@ export class DetailPage implements OnInit {
           }
         );
     });
+  }
+
+  edit(){
+    this.router.navigate(['/places/edit/' + this.place.id]);
+  }
+
+  deletePlace(id) {
+    this.presentAlertConfirm(id);
+  }
+
+  async presentAlertConfirm(id) {
+    const alert = await this.alertCtrl.create({
+      cssClass: 'my-custom-class',
+      header: 'Confirm!',
+      message: '¿Quiere eliminar este sitio?',
+      buttons: [
+        {
+          text: 'Ok',
+          handler: () => {
+            console.log('Aceptar');
+            this.placesService.deleteSitio(id).subscribe(() => {
+              this.placesService.obtenerSitios().subscribe((resp: any) => {
+                this.loadedPlaces = resp;
+                this.router.navigate(['/places']);
+              });
+            });
+          }
+        },
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+          handler: () => {
+            console.log('No se ha realizado ningún cambio');
+          }
+        }
+      ]
+    });
+
+    await alert.present();
   }
 }

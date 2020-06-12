@@ -2,50 +2,57 @@
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
-      <!-- <ion-button (click)="onOpenMenu()">
-        Open
-      </ion-button> -->
     </ion-buttons>
-    <ion-title>Discover Places</ion-title>
+    <ion-title>Book the game</ion-title>
+    <ion-buttons slot="primary">
+      <ion-button routerLink="/places/new">
+        <ion-icon name="add" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
-  <ion-grid>
+    <ion-grid>
     <ion-row>
-      <ion-col size="12" size-sm="8" offset-sm="2" class="text-center">
-        <ion-card>
+      <ion-col size="12" size-sm="8" offset-sm="2" text-center>
+        <ion-card  [routerLink]="[
+        '/',
+        'places',
+        firstElement.id
+      ]">
           <ion-card-header>
             <ion-card-title>{{ firstElement.title }}</ion-card-title>
             <ion-card-subtitle
-              >{{ firstElement.price | currency }} / por
-              partida</ion-card-subtitle
+              >{{ firstElement.price | currency:'EUR':true }} por partida</ion-card-subtitle
             >
           </ion-card-header>
           <ion-img [src]="firstElement.image_url"></ion-img>
           <ion-card-content>
-            <p>{{ firstElement.descripcion }}</p>
+            <p>{{ firstElement.description }}</p>
           </ion-card-content>
           <div>
             <ion-button
               fill="clear"
               color="primary"
               [routerLink]="[
-                '/',
-                'places',
-                firstElement.id
-              ]"
+        '/',
+        'places',
+        firstElement.id
+      ]"
             >
-              More
+              Más información
             </ion-button>
           </div>
         </ion-card>
       </ion-col>
     </ion-row>
     <ion-row>
-      <ion-col size="12" size-sm="8" offset-sm="2" class="text-center">
-        <ion-list>
-          <ion-item *ngFor="let place of loadedPlaces.slice(1)">
+      <ion-col size="12" size-sm="8" offset-sm="2" text-center>
+          <ion-item
+            [routerLink]="['/', 'places', place.id]"
+            *ngFor="let place of loadedPlaces.slice(1)"
+          >
             <ion-thumbnail slot="start">
               <ion-img [src]="place.image_url"></ion-img>
             </ion-thumbnail>
@@ -54,7 +61,6 @@
               <p>{{ place.descripcion }}</p>
             </ion-label>
           </ion-item>
-        </ion-list>
       </ion-col>
     </ion-row>
   </ion-grid>

@@ -25,6 +25,14 @@ const routes: Routes = [
         loadChildren: () => import('./places/detail/detail.module').then(m => m.DetailPageModule)
       },
     ]
+  },
+  {
+    path: 'auth',
+    loadChildren: () => import('./auth/auth.module').then( m => m.AuthPageModule)
+  },
+  {
+    path: 'bookings',
+    loadChildren: () => import('./bookings/bookings/bookings.module').then( m => m.BookingsPageModule)
   }
 ]
 
